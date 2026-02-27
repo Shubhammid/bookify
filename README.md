@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+## Clerk Authentication Setup
+
+This project uses [Clerk](https://clerk.com/) for authentication. To integrate with the App Router:
+
+1. Install the Clerk SDK:
+
+```bash
+npm install @clerk/nextjs
+```
+
+2. Add the following environment variables to a local `.env.local` file (never commit real keys):
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
+CLERK_SECRET_KEY=YOUR_SECRET_KEY
+```
+
+3. A `proxy.ts` middleware file has been added at the project root to wire up `clerkMiddleware()`.
+
+4. The application is wrapped with `<ClerkProvider>` in `app/layout.tsx`, and the navbar includes
+   sign‑in / sign‑up buttons plus a `<UserButton>` for authenticated users.
+
+5. Ensure `.env.local` (and any other `.env*`) are listed in `.gitignore` so keys stay secret.
+
+Start the dev server (`npm run dev`) and register or sign in via the UI.
