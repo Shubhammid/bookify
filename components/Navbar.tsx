@@ -9,6 +9,7 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
+  useUser,
 } from "@clerk/nextjs";
 
 const navItems = [
@@ -19,6 +20,8 @@ const navItems = [
 
 const Navbar = () => {
   const pathName = usePathname();
+  const { user } = useUser();
+
   return (
     <header className="w-full fixed z-50 bg-(--bg-primary)">
       <div className="wrapper navbar-height py-4 flex justify-between items-center">
@@ -52,6 +55,11 @@ const Navbar = () => {
             <SignedIn>
               <div className="nav-user-link">
                 <UserButton />
+                {user?.firstName && (
+                  <Link href="/subscriptions" className="nav-user-name">
+                    {user.firstName}
+                  </Link>
+                )}
               </div>
             </SignedIn>
           </div>
