@@ -22,8 +22,7 @@ export const getAllBooks = async () => {
             success: false, error: e
         }
     }
-}
-
+};
 
 export const checkBookExists = async (title: string) => {
   try {
